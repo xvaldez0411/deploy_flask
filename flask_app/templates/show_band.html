@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Band Info</title>
+</head>
+<body>
+    <div class="container">
+        <div class="nav_bar">
+            <div class="title">
+                <h1>Rock On {{user.first_name}}!!</h1>
+            </div>
+            <div class="nav_links">
+                <a href="/dashboard">Dashboard</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="left_col">
+                <h3>My Bands</h3>
+                <div class="content">
+                    {% for band in user.bands %}
+                    <div class=>
+                        <p>{{band.name}} <a href="/bands/{{band.id}}/edit">edit</a> <a href="/bands/{{band.id}}/delete">delete</a></p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="right_col">
+                <h3>Joined Bands:</h3>
+                <div class="content">
+                    {% for band in member.join %}
+                    <p>{{band.name}} <a href="/bands/{{band.id}}/quit">quit</a></p>
+                    {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
